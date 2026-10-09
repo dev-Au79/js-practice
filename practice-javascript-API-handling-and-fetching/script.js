@@ -39,6 +39,8 @@ function renderDriverList () {
         newDriversLi.textContent = getInputName;
 
         newDriversLi.addEventListener('click', () => {
+            message.textContent = `Name: "${getInputName}" was removed to the list!`;
+
             deleteName(index);
         })
 
@@ -49,7 +51,7 @@ function renderDriverList () {
 
 function deleteName(index){
     driverNamesArray.splice(index, 1);
-
+    
     renderDriverList();
 }
 
