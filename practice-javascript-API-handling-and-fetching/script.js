@@ -31,7 +31,30 @@ myButton.addEventListener("click", greetUser);*/
 
 const driverNamesArray = [];
 
-function addDriverName(){
+function renderDriverList () {
+    driversList.innerHTML = '';
+
+    driverNamesArray.forEach((getInputName, index) => {
+        const newDriversLi = document.createElement("li");
+        newDriversLi.textContent = getInputName;
+
+        newDriversLi.addEventListener('click', () => {
+            deleteName(index);
+        })
+
+        driversList.appendChild(newDriversLi);
+
+    })
+}
+
+function deleteName(index){
+    driverNamesArray.splice(index, 1);
+
+    renderDriverList();
+}
+
+
+myButton.addEventListener("click", () => {
     const getInputName = nameInput.value.trim();
 
     if (getInputName === ""){
@@ -41,14 +64,9 @@ function addDriverName(){
 
     driverNamesArray.push(getInputName);
 
-    const newDriversLi = document.createElement("li");
-    newDriversLi.textContent = getInputName;
-
-    driversList.appendChild(newDriversLi);
+    renderDriverList();
 
     nameInput.value = "";
+    nameInput.focus();
     message.textContent = `Name: "${getInputName}" was added to the list!`;
-
-}
-
-myButton.addEventListener("click", addDriverName);
+});
