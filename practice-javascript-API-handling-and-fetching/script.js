@@ -55,7 +55,6 @@ function deleteName(index){
     renderDriverList();
 }
 
-
 myButton.addEventListener("click", () => {
     const getInputName = nameInput.value.trim();
 
